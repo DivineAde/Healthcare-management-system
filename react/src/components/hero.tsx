@@ -245,7 +245,7 @@ export function Hero() {
                       </span>
                     </motion.span>
                     <motion.span 
-                      className="bg-linear-to-r from-sky-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent"
+                      className="bg-indigo-600 bg-clip-text text-transparent"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
@@ -280,7 +280,7 @@ export function Hero() {
                 >
                   <Button 
                     size="lg" 
-                    className="bg-linear-to-r from-sky-500 to-emerald-500 hover:from-sky-600 hover:to-emerald-600 text-white px-8 py-6 text-lg shadow-xl shadow-sky-500/25 hover:shadow-sky-500/40 transition-all duration-300"
+                    className="bg-sky-500 hover:bg-sky-600 text-white px-8 py-6 text-lg shadow-xl transition-all duration-300"
                     onClick={() => window.location.href = '/dashboard'}
                   >
                     Go to Dashboard
