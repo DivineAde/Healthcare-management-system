@@ -106,7 +106,7 @@ app.set('userSockets', userSockets)
 
 app.use(cors({
   origin: [
-    'https://healthsync-react.vercel.app',
+    'https://carereport-dashboard.vercel.app',
     'http://localhost:3000',
   ],
   credentials: true,
