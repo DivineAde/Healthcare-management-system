@@ -1,6 +1,6 @@
 "use client"
 import { Link, useLocation } from "react-router-dom"
-import { Menu, X, Home, BookOpen, Users, Stethoscope, Settings, Search, LogOut, Bell, Info, AlertCircle, CheckCircle, UserPlus } from "lucide-react"
+import { Menu, X, Home, BookOpen, Users, Stethoscope, Settings, Search, LogOut, Bell, Info, AlertCircle, CheckCircle, UserPlus, FileText } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "../ui/input"
 import ThemeToggle from "../theme-toggle"
@@ -36,6 +36,7 @@ const menuItems = [
   { href: "/dashboard", label: "Dashboard", icon: Home },
   { href: "/dashboard/icd11", label: "ICD-11 Codes", icon: BookOpen },
   { href: "/dashboard/patients", label: "Patients", icon: Users },
+  { href: "/dashboard/reports", label: "Reports", icon: FileText },
   // { href: "/dashboard/namaste", label: "NAMASTE", icon: Stethoscope },
 ]
 const getNotificationIcon = (type: Notification['type']) => {
@@ -70,7 +71,6 @@ export default function Sidebar({ open, onToggle, notifications = [], onClearNot
   const pathname = location.pathname
   const { user } = useAuth()
   const unreadCount = notifications.length
-  const isOrg = user?.role === 'organization'
 
   return (
     <>
@@ -115,20 +115,6 @@ export default function Sidebar({ open, onToggle, notifications = [], onClearNot
               </Link>
             )
           })}
-            <Link key="/dashboard/reports" to="/dashboard/reports">
-              <Button
-                variant={pathname === '/dashboard/reports' ? 'default' : 'ghost'}
-                className={`w-full mb-1 justify-start gap-3 h-11 text-sm font-medium transition-all duration-200 group ${
-                  pathname === '/dashboard/reports' 
-                    ? 'bg-linear-to-r from-sidebar-primary to-sidebar-primary/90 text-sidebar-primary-foreground shadow-lg shadow-sidebar-primary/20' 
-                    : 'text-sidebar-foreground/80 hover:text-sidebar-foreground hover:bg-sidebar-accent/10 hover:shadow-sm'
-                }`}>
-                <BookOpen className={`w-5 h-5 transition-transform duration-200 ${
-                  pathname === '/dashboard/reports' ? "" : "group-hover:scale-110"
-                }`} />
-                <span>Reports</span>
-              </Button>
-            </Link>
           <Link to="/dashboard/settings">
                 <Button
                   variant={pathname === '/dashboard/settings' ? "default" : "ghost"}
@@ -298,16 +284,6 @@ export default function Sidebar({ open, onToggle, notifications = [], onClearNot
                   </Link>
                 )
               })}
-              {isOrg && (
-                <Link key="/dashboard/reports" to="/dashboard/reports" onClick={onToggle}>
-                  <Button
-                    variant={pathname === '/dashboard/reports' ? 'default' : 'ghost'}
-                    className={`w-full justify-start gap-3 ${pathname === '/dashboard/reports' ? 'bg-sidebar-primary text-sidebar-primary-foreground' : 'text-sidebar-foreground hover:bg-sidebar-accent/10'}`}>
-                    <BookOpen className="w-5 h-5" />
-                    <span>Reports</span>
-                  </Button>
-                </Link>
-              )}
               <Link to="/dashboard/settings" onClick={onToggle}>
                 <Button
                   variant={pathname === '/dashboard/settings' ? "default" : "ghost"}
