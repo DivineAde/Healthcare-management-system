@@ -221,27 +221,27 @@ export default function SettingsPage() {
             <AuthGuard>
                 <div className="flex justify-center items-center min-h-[90vh]">
                     {/* You can replace this with a proper spinner component */}
-                    <p className="dark:text-white">Loading user data...</p>
+                    <p className="text-foreground">Loading user data...</p>
                 </div>
             </AuthGuard>
         )
     }
   return (
     <AuthGuard>
-            <div className=" min-h-[90vh] md:min-h-[85vh]  dark:bg-[#07232b] bg-[#eaf6ff] dark:border-none border border-gray-300/60 shadow-md shadow:xl rounded-xl relative">
+            <div className=" min-h-[90vh] md:min-h-[85vh] bg-background border border-border shadow-sm rounded-xl relative">
 
-        <div className="bg-linear-to-tr dark:from-[#51757e] from-[#f3faff] to-[#aad0ee] dark:to-[#0e3842] h-28 rounded-t-xl border-b border-border-gray-400/80"></div>
+        <div className="bg-muted h-28 rounded-t-xl border-b border-border"></div>
 
        <div className="absolute top-14 left-0 right-0 flex items-start px-10 ">
 
           <div className="flex flex-col md:px-10 ">
-            <div className="md:h-28 h-24 md:w-28 w-24 rounded-full border-3 dark:border-gray-800 border-gray-400 bg-primary/80 flex items-center justify-center">
-              <span className="dark:text-white md:text-4xl text-3xl font-bold text-primary">
+            <div className="md:h-28 h-24 md:w-28 w-24 rounded-full border border-border bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground md:text-4xl text-3xl font-bold">
                 {name ? name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2) : 'YN'}
               </span>
             </div>
 
-            <div className=" dark:text-white mt-3 text-left space-y-1">
+            <div className=" text-foreground mt-3 text-left space-y-1">
               <p className="md:text-2xl text-lg font-semibold ">{name || 'Your Name'}</p>
               <p className="opacity-80 text-sm ">{role === 'organization' ? 'Admin' : (speciality || 'Your Specialization')}</p>
               {role === 'organization' && <p className="opacity-80 text-sm ">{organisationName || 'Your Organisation'}</p>}
@@ -256,13 +256,13 @@ export default function SettingsPage() {
             <div className="flex flex-col">
               <div className="my-1 md:my-2 flex flex-col">
                 <label htmlFor='name'>Full Name</label>
-                <input type="text" id='name' placeholder="Your Full Name" className="border p-2 rounded bg-[#bfdaf0] dark:bg-[#17454f] md:my-4 my-3" value={name} onChange={(e)=>handleNameChange(e.target.value)}/>
+                <input type="text" id='name' placeholder="Your Full Name" className="border p-2 rounded bg-input md:my-4 my-3" value={name} onChange={(e)=>handleNameChange(e.target.value)}/>
               </div>
 
               {role !== 'organization' && (
                 <div className="my-1 md:my-2 flex flex-col">
                   <label htmlFor='specialisation'>Specialization</label>
-                  <input type="text" id='specialisation' placeholder="Your Specialization" className="border p-2 rounded dark:bg-[#17454f] bg-[#bfdaf0] md:my-4 my-3" value={speciality} onChange={(e)=>handleSpecialityChange(e.target.value)}/>
+                  <input type="text" id='specialisation' placeholder="Your Specialization" className="border p-2 rounded bg-input md:my-4 my-3" value={speciality} onChange={(e)=>handleSpecialityChange(e.target.value)}/>
                 </div>
               )}
             </div>
@@ -270,7 +270,7 @@ export default function SettingsPage() {
             <div className="flex flex-col">
               <div className="my-1 md:my-2 flex flex-col">
                 <label htmlFor="email" >Email</label>
-                <input type="text" id='email' placeholder="Your Email" className="border p-2 rounded bg-[#bfdaf0] dark:bg-[#17454f] md:my-4 my-3" value={email} onChange={(e)=>handleEmailChange(e.target.value)}/>
+                <input type="text" id='email' placeholder="Your Email" className="border p-2 rounded bg-input md:my-4 my-3" value={email} onChange={(e)=>handleEmailChange(e.target.value)}/>
               </div>
 
             </div>
@@ -291,7 +291,7 @@ export default function SettingsPage() {
             <button 
               onClick={handleSaveClick}
               disabled={isSaving}
-              className="h-9 md:h-10 w-28 md:w-34 text-sm dark:text-black text-white bg-[#0f709c] rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-[#0d5f7a] transition-colors">
+              className="h-9 md:h-10 w-28 md:w-34 text-sm bg-primary text-primary-foreground rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-primary/90 transition-colors">
               {isSaving ? 'Saving...' : 'Save Changes'}
             </button>
           </div>

@@ -241,7 +241,7 @@ export function Hero() {
                       transition={{ duration: 0.6, delay: 0.3 }}
                     >
                       <span className="bg-linear-to-r from-slate-900 via-slate-800 to-slate-900 dark:from-white dark:via-slate-100 dark:to-white bg-clip-text text-transparent">
-                        Health
+                        Care
                       </span>
                     </motion.span>
                     <motion.span 
@@ -250,7 +250,7 @@ export function Hero() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6, delay: 0.4 }}
                     >
-                      Sync
+                      Report
                     </motion.span>
                   </h1>
                 </div>
@@ -369,7 +369,7 @@ export function Hero() {
                     
                     <div className="space-y-4">
                       <div className="flex items-center gap-2 text-emerald-400 font-mono text-sm">
-                        <span>healthcare@terminal:~$</span>
+                        <span>careport@terminal:~$</span>
                         <span className="text-slate-400">search-icd11</span>
                       </div>
                       

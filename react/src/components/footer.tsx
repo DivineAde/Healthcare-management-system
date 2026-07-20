@@ -11,7 +11,7 @@ export function Footer() {
               <div className="w-10 h-10 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-400 flex items-center justify-center shadow-lg">
                 <img src="/logo-white.png" alt="CareReport Logo" className="w-6 h-6" />
               </div>
-              <span className="font-bold text-foreground text-xl">CareReport EMR</span>
+              <span className="font-bold text-foreground text-xl">CareReport</span>
             </div>
             <p className="text-muted-foreground/90 leading-relaxed mb-6">
               Enterprise EMR, interoperability, and clinical workflows for modern clinics and hospitals. Built for the future of healthcare.
@@ -99,7 +99,7 @@ export function Footer() {
         <div className="border-t border-border/30 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-muted-foreground text-center md:text-left">
-              &copy; 2026 CareReport EMR. All rights reserved. Built for secure clinical workflows and interoperability.
+              &copy; 2026 CareReport. All rights reserved. Built for secure clinical workflows and interoperability.
             </p>
             <div className="flex items-center gap-4">
               <div className="px-3 py-1 rounded-full bg-gradient-to-r from-emerald-500/10 to-cyan-400/10 border border-primary/20">

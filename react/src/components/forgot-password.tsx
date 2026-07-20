@@ -5,8 +5,6 @@ import { Button } from "./ui/button"
 import { Input } from "./ui/input"
 import { Card } from "./ui/card"
 import { Link, useNavigate } from "react-router-dom"
-import { Header } from "./header"
-import { Footer } from "./footer"
 import { ArrowLeft, Mail, Lock, CheckCircle } from "lucide-react"
 
 export function ForgotPassword() {
@@ -93,11 +91,14 @@ export function ForgotPassword() {
   }
 
   return (
-    <main className="min-h-screen bg-background">
-      <Header />
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center px-4">
+      <div className="w-full max-w-md space-y-6">
+        <div className="text-center space-y-1">
+          <h1 className="text-2xl font-bold text-foreground tracking-tight">Forgot Password?</h1>
+          <p className="text-sm text-muted-foreground">Enter your email to receive a reset OTP</p>
+        </div>
 
-      <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <Card className="p-8 backdrop-blur-xl bg-card/80 border-border/50 shadow-2xl">
+        <Card className="p-6">
           {/* Back to Login */}
           <Link 
             to="/login" 
@@ -122,13 +123,13 @@ export function ForgotPassword() {
 
               <form onSubmit={handleSendOTP} className="space-y-4">
                 {error && (
-                  <div className="p-3 rounded-lg bg-destructive/10 border border-destructive/50 text-destructive text-sm">
+                  <div className="p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm">
                     {error}
                   </div>
                 )}
 
                 {successMessage && (
-                  <div className="p-3 rounded-lg bg-green-500/10 border border-green-500/50 text-green-600 text-sm">
+                  <div className="p-3 rounded-md bg-muted border border-border text-foreground text-sm">
                     {successMessage}
                   </div>
                 )}
@@ -170,7 +171,7 @@ export function ForgotPassword() {
 
               <form onSubmit={handleResetPassword} className="space-y-4">
                 {error && (
-                  <div className="p-3 rounded-lg bg-destructive/10 border border-destructive/50 text-destructive text-sm">
+                  <div className="p-3 rounded-lg bg-destructive/10 border border-destructive/20 text-destructive text-sm">
                     {error}
                   </div>
                 )}
@@ -240,8 +241,8 @@ export function ForgotPassword() {
           {step === 'success' && (
             <>
               <div className="text-center py-8">
-                <div className="w-16 h-16 rounded-full bg-green-500/10 flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle className="w-8 h-8 text-green-600" />
+                <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
+                  <CheckCircle className="w-8 h-8 text-foreground" />
                 </div>
                 <h1 className="text-2xl font-bold text-foreground mb-2">Password Reset Successful!</h1>
                 <p className="text-muted-foreground mb-6">
@@ -258,9 +259,7 @@ export function ForgotPassword() {
           )}
         </Card>
       </div>
-
-      <Footer />
-    </main>
+    </div>
   )
 }
 

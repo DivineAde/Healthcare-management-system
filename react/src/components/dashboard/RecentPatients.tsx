@@ -163,7 +163,7 @@ export default function RecentPatients() {
 
   return (
     <Card className="bg-card border-border overflow-hidden">
-      <div className="bg-linear-to-r from-primary/5 via-primary/3 to-transparent p-6 border-b border-border/50">
+      <div className="bg-muted p-6 border-b border-border/50">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg bg-primary/10">
@@ -214,10 +214,10 @@ export default function RecentPatients() {
             return (
               <div key={patient.id} className="group">
                 {/* Mobile View */}
-                <div className="sm:hidden p-3 rounded-lg border border-border bg-linear-to-br from-card via-card to-muted/20 hover:shadow-lg hover:border-primary/30 transition-all duration-300">
+                <div className="sm:hidden p-3 rounded-lg border border-border bg-card hover:shadow-sm hover:border-primary/30 transition-all duration-300">
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-start gap-2.5 flex-1 min-w-0">
-                      <div className="w-10 h-10 rounded-lg bg-linear-to-br from-primary/20 to-primary/5 flex items-center justify-center shrink-0 shadow-sm">
+                      <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center shrink-0 shadow-sm">
                         <span className="text-sm font-bold text-primary">
                           {patient.name ? patient.name.split(" ")[0][0] : "P"}
                           {patient.name && patient.name.split(" ")[1] ? patient.name.split(" ")[1][0] : ""}
@@ -254,9 +254,9 @@ export default function RecentPatients() {
                 </div>
 
                 {/* Desktop View */}
-                <div className="hidden sm:flex items-center justify-between p-3 rounded-lg border border-border bg-linear-to-br from-card via-card to-muted/20 hover:shadow-lg hover:border-primary/30 transition-all duration-300">
+                <div className="hidden sm:flex items-center justify-between p-3 rounded-lg border border-border bg-card hover:shadow-sm hover:border-primary/30 transition-all duration-300">
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className="w-10 h-10 rounded-lg bg-linear-to-br from-primary/20 to-primary/5 flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-300">
+                    <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform duration-300">
                       <span className="text-sm font-bold text-primary">
                         {patient.name ? patient.name.split(" ")[0][0] : "P"}
                         {patient.name && patient.name.split(" ")[1] ? patient.name.split(" ")[1][0] : ""}

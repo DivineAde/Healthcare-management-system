@@ -50,8 +50,8 @@ export default function EMRDashboard() {
     box.style.padding = '8px 12px'
     box.style.borderRadius = '8px'
     box.style.boxShadow = '0 6px 18px rgba(0,0,0,0.18)'
-    box.style.background = 'linear-gradient(180deg, #ffffff, #fbfbfb)'
-    box.style.color = '#111827'
+    box.style.background = '#fafafa'
+    box.style.color = '#0a0a0a'
     box.style.display = 'flex'
     box.style.alignItems = 'center'
     box.style.gap = '10px'
@@ -60,12 +60,12 @@ export default function EMRDashboard() {
     avatar.style.width = '40px'
     avatar.style.height = '40px'
     avatar.style.borderRadius = '8px'
-    avatar.style.background = 'linear-gradient(135deg,#eef2ff,#e6f0ff)'
+    avatar.style.background = '#f5f5f5'
     avatar.style.display = 'flex'
     avatar.style.alignItems = 'center'
     avatar.style.justifyContent = 'center'
     avatar.style.fontWeight = '600'
-    avatar.style.color = '#4338ca'
+    avatar.style.color = '#0a0a0a'
     avatar.textContent = (name || '').slice(0,2).toUpperCase()
 
     const text = document.createElement('div')
@@ -78,7 +78,7 @@ export default function EMRDashboard() {
     title.textContent = name || 'Patient'
     const sub = document.createElement('div')
     sub.style.fontSize = '12px'
-    sub.style.color = '#6b7280'
+    sub.style.color = '#737373'
     sub.textContent = meta || ''
 
     text.appendChild(title)
@@ -303,53 +303,53 @@ export default function EMRDashboard() {
         <>
         {/* Statistics Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="p-6 bg-linear-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20 border-blue-200/50 dark:border-blue-800/50">
+          <Card className="p-6 bg-muted border-border">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-blue-600 dark:text-blue-400">Total Patients</p>
-                <p className="text-3xl font-bold text-blue-700 dark:text-blue-300 mt-2">{orgPatients.length}</p>
+                <p className="text-sm font-medium text-muted-foreground">Total Patients</p>
+                <p className="text-3xl font-bold text-foreground mt-2">{orgPatients.length}</p>
               </div>
-              <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                <Users className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
+                <Users className="w-6 h-6 text-muted-foreground" />
               </div>
             </div>
           </Card>
 
-          <Card className="p-6 bg-linear-to-br from-green-50 to-green-100/50 dark:from-green-950/30 dark:to-green-900/20 border-green-200/50 dark:border-green-800/50">
+          <Card className="p-6 bg-muted border-border">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-green-600 dark:text-green-400">Assigned</p>
-                <p className="text-3xl font-bold text-green-700 dark:text-green-300 mt-2">{orgPatients.filter(p => p.createdBy).length}</p>
+                <p className="text-sm font-medium text-muted-foreground">Assigned</p>
+                <p className="text-3xl font-bold text-foreground mt-2">{orgPatients.filter(p => p.createdBy).length}</p>
               </div>
-              <div className="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center">
-                <UserCheck className="w-6 h-6 text-green-600 dark:text-green-400" />
+              <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
+                <UserCheck className="w-6 h-6 text-muted-foreground" />
               </div>
             </div>
           </Card>
 
-          <Card className="p-6 bg-linear-to-br from-amber-50 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20 border-amber-200/50 dark:border-amber-800/50">
+          <Card className="p-6 bg-muted border-border">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-amber-600 dark:text-amber-400">Unassigned</p>
-                <p className="text-3xl font-bold text-amber-700 dark:text-amber-300 mt-2">{orgPatients.filter(p => !p.createdBy).length}</p>
+                <p className="text-sm font-medium text-muted-foreground">Unassigned</p>
+                <p className="text-3xl font-bold text-foreground mt-2">{orgPatients.filter(p => !p.createdBy).length}</p>
               </div>
-              <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center">
-                <UserX className="w-6 h-6 text-amber-600 dark:text-amber-400" />
+              <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
+                <UserX className="w-6 h-6 text-muted-foreground" />
               </div>
             </div>
           </Card>
 
-          <Card className="p-6 bg-linear-to-br from-purple-50 to-purple-100/50 dark:from-purple-950/30 dark:to-purple-900/20 border-purple-200/50 dark:border-purple-800/50">
+          <Card className="p-6 bg-muted border-border">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-purple-600 dark:text-purple-400">Active Doctors</p>
+                <p className="text-sm font-medium text-muted-foreground">Active Doctors</p>
                 <div className="flex items-baseline gap-2 mt-2">
-                  <p className="text-3xl font-bold text-purple-700 dark:text-purple-300">{connectedDoctors.length - 1}</p>
-                  <span className="text-sm text-purple-500 dark:text-purple-400">/ {doctorList.length}</span>
+                  <p className="text-3xl font-bold text-foreground">{connectedDoctors.length - 1}</p>
+                  <span className="text-sm text-muted-foreground">/ {doctorList.length}</span>
                 </div>
               </div>
-              <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center">
-                <Activity className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+              <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
+                <Activity className="w-6 h-6 text-muted-foreground" />
               </div>
             </div>
           </Card>
@@ -439,7 +439,7 @@ export default function EMRDashboard() {
                     >
                       <td className="py-4 px-6">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center font-bold text-sm text-primary">{(p.name || p.id || '').slice(0,2).toUpperCase()}</div>
+                          <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center font-bold text-sm text-primary">{(p.name || p.id || '').slice(0,2).toUpperCase()}</div>
                           <div className="min-w-0">
                             <div className="text-sm font-semibold text-foreground truncate">{p.name || p.id}</div>
                             <div className="text-xs text-muted-foreground truncate">{
@@ -452,20 +452,20 @@ export default function EMRDashboard() {
                         </div>
                       </td>
                       <td className="py-4 px-6">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs font-medium">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full bg-muted text-foreground text-xs font-medium">
                           {p.age ?? '—'}
                         </span>
                       </td>
                       <td className="py-4 px-6">
                         {p.createdBy ? (
                           <div className="flex items-center gap-2">
-                            <div className="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                              <UserCheck className="w-3 h-3 text-green-600 dark:text-green-400" />
+                            <div className="w-6 h-6 rounded-full bg-muted flex items-center justify-center">
+                              <UserCheck className="w-3 h-3 text-muted-foreground" />
                             </div>
                             <span className="text-sm font-medium text-foreground">{doctorMap[p.createdBy]?.name || doctorMap[p.createdBy]?.email || p.createdBy}</span>
                           </div>
                         ) : (
-                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs font-medium">
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-muted text-muted-foreground text-xs font-medium">
                             <UserX className="w-3 h-3" />
                             Unassigned
                           </span>

@@ -1,56 +1,27 @@
-import { Community } from "../community";
-import { CTA } from "../cta";
-import { Footer } from "../footer";
-import { Header } from "../header";
-import { Hero } from "../hero";
-import DarkVeil from "../reactBit";
-import { useEffect, useState } from "react";
-
+import { useEffect } from "react";
+import { useAuth } from "@/lib/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-  const [isDark, setIsDark] = useState<boolean>(false);
+  const { user, loading } = useAuth();
+  const navigate = useNavigate();
 
-  // Monitor theme changes
   useEffect(() => {
-    const checkTheme = () => {
-      const isDarkMode = document.documentElement.classList.contains('dark');
-      setIsDark(isDarkMode);
-    };
+    if (loading) return;
+    if (user) {
+      navigate("/dashboard", { replace: true });
+    } else {
+      navigate("/login", { replace: true });
+    }
+  }, [user, loading, navigate]);
 
-    // Check initial theme
-    checkTheme();
-
-    // Watch for theme changes using MutationObserver
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.attributeName === 'class') {
-          checkTheme();
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class']
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <main className="min-h-screen bg-background relative">
-      {/* Only show DarkVeil in dark mode */}
-      {isDark && (
-        <DarkVeil hueShift={15} noiseIntensity={0.015} scanlineIntensity={0.01} speed={0.25} warpAmount={0.015} />
-      )}
-      <div className="relative z-10">
-        <Header />
-        <Hero />
-        {/* <Features /> */}
-        <Community />
-        <CTA />
-        <Footer />
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-background">
+        <div className="text-sm text-muted-foreground">Loading...</div>
       </div>
-    </main>
-  )
+    );
+  }
+
+  return null;
 }

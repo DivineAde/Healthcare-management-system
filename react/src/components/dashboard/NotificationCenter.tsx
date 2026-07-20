@@ -47,15 +47,15 @@ const NotificationIcon = ({ type }: { type: Notification['type'] }) => {
 const getNotificationStyles = (type: Notification['type']) => {
   switch (type) {
     case 'patient-assigned':
-      return 'bg-gradient-to-r from-blue-500/10 to-indigo-500/10 border-blue-500/50 text-blue-900 dark:text-blue-100'
+      return 'bg-muted border-border text-foreground'
     case 'success':
-      return 'bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-green-500/50 text-green-900 dark:text-green-100'
+      return 'bg-muted border-border text-foreground'
     case 'error':
-      return 'bg-gradient-to-r from-red-500/10 to-rose-500/10 border-red-500/50 text-red-900 dark:text-red-100'
+      return 'bg-muted border-border text-foreground'
     case 'warning':
-      return 'bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border-yellow-500/50 text-yellow-900 dark:text-yellow-100'
+      return 'bg-muted border-border text-foreground'
     default:
-      return 'bg-gradient-to-r from-gray-500/10 to-slate-500/10 border-gray-500/50 text-gray-900 dark:text-gray-100'
+      return 'bg-muted border-border text-foreground'
   }
 }
 
@@ -132,7 +132,7 @@ function NotificationItem({ notification, onRemove, isHovered, onHover }: Notifi
     >
       <div
         className={`
-          relative overflow-hidden rounded-xl border-2 backdrop-blur-xl shadow-2xl
+          relative overflow-hidden rounded-xl border shadow-md
           ${getNotificationStyles(notification.type)}
           transition-all duration-200
           ${isHovered ? 'scale-105' : 'scale-100'}

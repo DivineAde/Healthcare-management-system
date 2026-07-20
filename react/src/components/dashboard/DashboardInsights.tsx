@@ -58,10 +58,10 @@ function InsightCard({
   tone: "blue" | "green" | "amber" | "cyan"
 }) {
   const toneClass = {
-    blue: "from-blue-500/12 to-blue-500/5 text-blue-600 dark:text-blue-300",
-    green: "from-green-500/12 to-green-500/5 text-green-600 dark:text-green-300",
-    amber: "from-amber-500/14 to-amber-500/5 text-amber-600 dark:text-amber-300",
-    cyan: "from-cyan-500/12 to-cyan-500/5 text-cyan-600 dark:text-cyan-300",
+    blue: "bg-muted text-foreground",
+    green: "bg-muted text-foreground",
+    amber: "bg-muted text-foreground",
+    cyan: "bg-muted text-foreground",
   }[tone]
 
   return (
@@ -72,7 +72,7 @@ function InsightCard({
           <p className="mt-2 text-3xl font-bold leading-none text-foreground">{value}</p>
           <p className="mt-2 text-xs text-muted-foreground">{note}</p>
         </div>
-        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-linear-to-br ${toneClass}`}>
+        <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg ${toneClass}`}>
           <Icon className="h-5 w-5" />
         </div>
       </div>
@@ -210,7 +210,7 @@ export default function DashboardInsights() {
               <div key={item.label} className="flex h-full flex-1 flex-col justify-end gap-2">
                 <div className="flex min-h-0 flex-1 items-end rounded-md bg-muted/70 px-1.5">
                   <div
-                    className="w-full rounded-md bg-linear-to-t from-primary to-cyan-400 transition-all"
+                    className="w-full rounded-md bg-primary transition-all"
                     style={{ height: `${Math.max((item.count / maxDaily) * 100, item.count ? 12 : 2)}%` }}
                     title={`${item.count} diagnosis`}
                   />
@@ -238,7 +238,7 @@ export default function DashboardInsights() {
                     <span className="text-muted-foreground">{item.count}</span>
                   </div>
                   <div className="h-2 rounded-full bg-muted">
-                    <div className="h-2 rounded-full bg-green-500" style={{ width: `${(item.count / maxTopDiagnosis) * 100}%` }} />
+                    <div className="h-2 rounded-full bg-primary" style={{ width: `${(item.count / maxTopDiagnosis) * 100}%` }} />
                   </div>
                 </div>
               ))}
@@ -264,7 +264,7 @@ export default function DashboardInsights() {
                 <p className="text-sm text-muted-foreground">{item.count}</p>
               </div>
               <div className="h-2 rounded-full bg-background">
-                <div className="h-2 rounded-full bg-cyan-500" style={{ width: `${(item.count / maxAgeGroup) * 100}%` }} />
+                <div className="h-2 rounded-full bg-primary" style={{ width: `${(item.count / maxAgeGroup) * 100}%` }} />
               </div>
             </div>
           ))}

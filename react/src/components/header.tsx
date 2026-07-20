@@ -20,9 +20,6 @@ export function Header() {
           <a href="#features" className="text-sm text-muted-foreground hover:text-foreground transition">
             Features
           </a>
-          <a href="#community" className="text-sm text-muted-foreground hover:text-foreground transition">
-            Community
-          </a>
           <a href="#about" className="text-sm text-muted-foreground hover:text-foreground transition">
             About
           </a>

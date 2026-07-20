@@ -4,80 +4,75 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Light theme: very light, pale-blue surfaces (new light theme requested)
-     Background is a very pale blue, cards are white or slightly tinted blue,
-     sidebar is a soft pale-blue so it remains distinguished from the page.
-     Text uses a deep navy for good contrast. */
-  --background: #F6FBFF; /* very pale blue page canvas */
-  --foreground: #042433; /* deep navy text on light background */
-  --card: #FFFFFF; /* white card surface for crisp elevation */
-  --card-foreground: #042433;
-  --popover: #FFFFFF;
-  --popover-foreground: #042433;
-  --primary: #0B74A6; /* medical blue — good on both light & dark */
-  --primary-foreground: #FFFFFF;
-  --secondary: #5B6EF8; /* soft indigo */
-  --secondary-foreground: #FFFFFF;
-  --muted: #EBF6FB; /* soft muted surface */
-  --muted-foreground: #6B8790;
-  --accent: #16A34A; /* green for success/actions */
-  --accent-foreground: #FFFFFF;
-  --destructive: #DC2626;
-  --destructive-foreground: #FFFFFF;
-  --border: #D6EEF9; /* light subtle border */
-  --input: #F2FBFF;
-  --ring: #0B74A6; /* focus ring matches primary */
-  --chart-1: #0B74A6;
-  --chart-2: #5B6EF8;
-  --chart-3: #16A34A;
-  --chart-4: #7C3AED;
-  --chart-5: #06B6D4;
-  --radius: 0.625rem;
-  --sidebar: #EAF6FF; /* pale-blue sidebar, still distinguishable */
-  --sidebar-foreground: #042433; /* dark text for good contrast */
-  --sidebar-primary: #0B74A6;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #16A34A;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #D1EAF6;
-  --sidebar-ring: #0B74A6;
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --primary: #0a0a0a;
+  --primary-foreground: #fafafa;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #0a0a0a;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --accent: #f5f5f5;
+  --accent-foreground: #0a0a0a;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #0a0a0a;
+  --chart-1: #0a0a0a;
+  --chart-2: #737373;
+  --chart-3: #a3a3a3;
+  --chart-4: #d4d4d4;
+  --chart-5: #e5e5e5;
+  --radius: 0.5rem;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #0a0a0a;
+  --sidebar-primary: #0a0a0a;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #0a0a0a;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #0a0a0a;
 }
 
 .dark {
-  /* Dark theme: previous deep/navy palette (becomes dark variant after swap) */
-  --background: #03121A; /* very dark deep navy (page canvas) */
-  --foreground: #E6F7FF; /* light text on dark background */
-  --card: #07232B; /* card surface slightly lighter than background */
-  --card-foreground: #E6F7FF;
-  --popover: #07232B;
-  --popover-foreground: #E6F7FF;
-  --primary: #0B74A6; /* Deep medical blue */
-  --primary-foreground: #FFFFFF;
-  --secondary: #5B6EF8; /* soft indigo */
-  --secondary-foreground: #FFFFFF;
-  --muted: #061821; /* subtle surface slightly lighter than background */
-  --muted-foreground: #9FB6C7;
-  --accent: #16A34A; /* green for assignment/success */
-  --accent-foreground: #FFFFFF;
-  --destructive: #EF4444;
-  --destructive-foreground: #FFFFFF;
-  --border: #0A2A33; /* subtle border above background */
-  --input: #062029;
-  --ring: #0F86C1; /* focus ring */
-  --chart-1: #0B74A6; /* primary */
-  --chart-2: #5B6EF8; /* secondary */
-  --chart-3: #16A34A; /* accent */
-  --chart-4: #7C3AED; /* purple accent */
-  --chart-5: #06B6D4; /* teal */
-  --radius: 0.625rem;
-  --sidebar: #0A2E36; /* sidebar slightly lighter than background */
-  --sidebar-foreground: #DFF6FF; /* pale cyan for sidebar text */
-  --sidebar-primary: #0B74A6;
-  --sidebar-primary-foreground: #DFF6FF;
-  --sidebar-accent: #16A34A;
-  --sidebar-accent-foreground: #DFF6FF;
-  --sidebar-border: #07282F;
-  --sidebar-ring: #0F86C1;
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #0a0a0a;
+  --card-foreground: #fafafa;
+  --popover: #0a0a0a;
+  --popover-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #0a0a0a;
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
+  --muted: #262626;
+  --muted-foreground: #a3a3a3;
+  --accent: #262626;
+  --accent-foreground: #fafafa;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #fafafa;
+  --border: #262626;
+  --input: #262626;
+  --ring: #d4d4d4;
+  --chart-1: #fafafa;
+  --chart-2: #a3a3a3;
+  --chart-3: #737373;
+  --chart-4: #525252;
+  --chart-5: #404040;
+  --radius: 0.5rem;
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #fafafa;
+  --sidebar-primary: #fafafa;
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #fafafa;
+  --sidebar-border: #262626;
+  --sidebar-ring: #d4d4d4;
 }
 
 @theme inline {

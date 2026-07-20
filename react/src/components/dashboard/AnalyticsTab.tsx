@@ -170,50 +170,50 @@ export default function AnalyticsTab({ orgId }: { orgId: string | null }) {
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="p-6 bg-linear-to-br from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20 border-blue-200/50 dark:border-blue-800/50">
+        <Card className="p-6 bg-muted border-border">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-blue-600 dark:text-blue-400">Total Patients</p>
-              <p className="text-3xl font-bold text-blue-700 dark:text-blue-300 mt-2">{analytics.totalPatients}</p>
+              <p className="text-sm font-medium text-muted-foreground">Total Patients</p>
+              <p className="text-3xl font-bold text-foreground mt-2">{analytics.totalPatients}</p>
             </div>
-            <div className="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
-              <Users className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+            <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
+              <Users className="w-6 h-6 text-muted-foreground" />
             </div>
           </div>
         </Card>
 
-        <Card className="p-6 bg-linear-to-br from-green-50 to-green-100/50 dark:from-green-950/30 dark:to-green-900/20 border-green-200/50 dark:border-green-800/50">
+        <Card className="p-6 bg-muted border-border">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-green-600 dark:text-green-400">Total Diagnosis</p>
-              <p className="text-3xl font-bold text-green-700 dark:text-green-300 mt-2">{analytics.totalDiagnosis}</p>
+              <p className="text-sm font-medium text-muted-foreground">Total Diagnosis</p>
+              <p className="text-3xl font-bold text-foreground mt-2">{analytics.totalDiagnosis}</p>
             </div>
-            <div className="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center">
-              <Activity className="w-6 h-6 text-green-600 dark:text-green-400" />
+            <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
+              <Activity className="w-6 h-6 text-muted-foreground" />
             </div>
           </div>
         </Card>
 
-        <Card className="p-6 bg-linear-to-br from-purple-50 to-purple-100/50 dark:from-purple-950/30 dark:to-purple-900/20 border-purple-200/50 dark:border-purple-800/50">
+        <Card className="p-6 bg-muted border-border">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-purple-600 dark:text-purple-400">Period Diagnosis</p>
-              <p className="text-3xl font-bold text-purple-700 dark:text-purple-300 mt-2">{analytics.filteredDiagnosisCount}</p>
+              <p className="text-sm font-medium text-muted-foreground">Period Diagnosis</p>
+              <p className="text-3xl font-bold text-foreground mt-2">{analytics.filteredDiagnosisCount}</p>
             </div>
-            <div className="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center">
-              <TrendingUp className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
+              <TrendingUp className="w-6 h-6 text-muted-foreground" />
             </div>
           </div>
         </Card>
 
-        <Card className="p-6 bg-linear-to-br from-amber-50 to-amber-100/50 dark:from-amber-950/30 dark:to-amber-900/20 border-amber-200/50 dark:border-amber-800/50">
+        <Card className="p-6 bg-muted border-border">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-amber-600 dark:text-amber-400">Signed Doctors</p>
-              <p className="text-3xl font-bold text-amber-700 dark:text-amber-300 mt-2">{doctors.length}</p>
+              <p className="text-sm font-medium text-muted-foreground">Signed Doctors</p>
+              <p className="text-3xl font-bold text-foreground mt-2">{doctors.length}</p>
             </div>
-            <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center">
-              <Users className="w-6 h-6 text-amber-600 dark:text-amber-400" />
+            <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
+              <Users className="w-6 h-6 text-muted-foreground" />
             </div>
           </div>
         </Card>
@@ -237,7 +237,7 @@ export default function AnalyticsTab({ orgId }: { orgId: string | null }) {
                   </div>
                   <div className="w-full bg-muted rounded-full h-2">
                     <div 
-                      className="bg-linear-to-r from-primary to-primary/70 h-2 rounded-full transition-all"
+                      className="bg-primary h-2 rounded-full transition-all"
                       style={{ width: `${(item.count / maxDiseaseCount) * 100}%` }}
                     />
                   </div>
@@ -264,7 +264,7 @@ export default function AnalyticsTab({ orgId }: { orgId: string | null }) {
                 </div>
                 <div className="w-full bg-muted rounded-full h-2">
                   <div 
-                    className="bg-linear-to-r from-blue-500 to-cyan-400 h-2 rounded-full transition-all"
+                    className="bg-foreground h-2 rounded-full transition-all"
                     style={{ width: `${(count / maxAge) * 100}%` }}
                   />
                 </div>
@@ -323,7 +323,7 @@ export default function AnalyticsTab({ orgId }: { orgId: string | null }) {
                     </div>
                     <div className="w-full bg-muted rounded-full h-2">
                       <div 
-                        className="bg-linear-to-r from-green-500 to-emerald-400 h-2 rounded-full transition-all"
+                        className="bg-foreground h-2 rounded-full transition-all"
                         style={{ width: `${(item.count / maxMonthly) * 100}%` }}
                       />
                     </div>

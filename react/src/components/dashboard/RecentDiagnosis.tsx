@@ -66,11 +66,11 @@ export default function IntegrationStatus() {
 
   return (
     <Card className="bg-card border-border overflow-hidden">
-      <div className="bg-linear-to-r from-green-500/5 via-green-500/3 to-transparent p-6 border-b border-border/50">
+      <div className="bg-muted p-6 border-b border-border/50">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-green-500/10">
-              <FileText className="h-5 w-5 text-green-600" />
+            <div className="p-2 rounded-lg bg-muted">
+              <FileText className="h-5 w-5 text-foreground" />
             </div>
             <div>
               <h2 className="text-xl font-bold text-foreground leading-tight">Recent Diagnosis</h2>
@@ -93,7 +93,7 @@ export default function IntegrationStatus() {
             placeholder="Search by patient, diagnosis, or ICD code..." 
             value={query} 
             onChange={e => setQuery(e.target.value)}
-            className="pl-10 bg-background/50 backdrop-blur-sm border-border/60 focus:border-primary/50 transition-colors"
+            className="pl-10 bg-background/50 border-border/60 focus:border-primary/50 transition-colors"
           />
         </div>
       </div>
@@ -139,7 +139,7 @@ export default function IntegrationStatus() {
             return (
               <div 
                 key={d.id} 
-                className="group p-3 border border-border rounded-lg bg-linear-to-br from-card via-card to-muted/20 hover:shadow-lg hover:border-green-500/30 transition-all duration-300"
+                className="group p-3 border border-border rounded-lg bg-card hover:shadow-sm hover:border-border transition-all duration-300"
               >
                 <div className="flex items-start justify-between gap-3">
                   <div className="flex-1 min-w-0">
@@ -148,13 +148,13 @@ export default function IntegrationStatus() {
                         {d.patientName || `Patient ${d.patientId.slice(0, 8)}`}
                       </p>
                       {d.icd11 && (
-                        <span className="px-1.5 py-0.5 rounded-full text-xs bg-green-500/10 text-green-600 font-medium shrink-0">
+                        <span className="px-1.5 py-0.5 rounded-full text-xs bg-muted text-foreground font-medium shrink-0">
                           ICD-11
                         </span>
                       )}
                     </div>
                     <div className="flex items-start gap-1.5 mb-1">
-                      <Stethoscope className="h-3 w-3 text-green-600 shrink-0 mt-0.5" />
+                      <Stethoscope className="h-3 w-3 text-foreground shrink-0 mt-0.5" />
                       <p className="text-xs text-muted-foreground wrap-break-words">
                         {diagnosisText}
                       </p>

@@ -1,6 +1,6 @@
 "use client"
 import { Link, useLocation } from "react-router-dom"
-import { Menu, X, Home, BookOpen, Users, Stethoscope, Settings, Search, LogOut, Bell, Info, AlertCircle, CheckCircle, UserPlus, FileText } from "lucide-react"
+import { Menu, X, Home, BookOpen, Users, Settings, Search, LogOut, Bell, Info, AlertCircle, CheckCircle, UserPlus, FileText, Stethoscope } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "../ui/input"
 import ThemeToggle from "../theme-toggle"
@@ -12,21 +12,21 @@ function LogoutButton() {
   const { logout } = useAuth()
   return (
     <Button
-      variant="destructive"
-      size="lg"
-      className="w-full justify-start gap-3 text-white"
+      variant="ghost"
+      size="sm"
+      className="w-full justify-start gap-2 text-muted-foreground hover:text-destructive"
       onClick={() => void logout()}
       aria-label="Logout"
     >
-      <LogOut className="w-5 h-5" />
-      <span className="text-base">Logout</span>
+      <LogOut className="w-4 h-4" />
+      <span className="text-sm">Logout</span>
     </Button>
   )
 }
 
 interface SidebarProps {
   open: boolean
-  onToggle: () => void,
+  onToggle: () => void
   notifications?: Notification[]
   onClearNotifications?: () => void
   onRemoveNotification?: (id: string) => void
@@ -37,36 +37,38 @@ const menuItems = [
   { href: "/dashboard/icd11", label: "ICD-11 Codes", icon: BookOpen },
   { href: "/dashboard/patients", label: "Patients", icon: Users },
   { href: "/dashboard/reports", label: "Reports", icon: FileText },
-  // { href: "/dashboard/namaste", label: "NAMASTE", icon: Stethoscope },
 ]
+
 const getNotificationIcon = (type: Notification['type']) => {
-    switch (type) {
-      case 'patient-assigned':
-        return <UserPlus className="w-4 h-4" />
-      case 'success':
-        return <CheckCircle className="w-4 h-4" />
-      case 'error':
-        return <AlertCircle className="w-4 h-4" />
-      case 'warning':
-        return <AlertCircle className="w-4 h-4" />
-      default:
-        return <Info className="w-4 h-4" />
-    }
+  switch (type) {
+    case 'patient-assigned':
+      return <UserPlus className="w-4 h-4" />
+    case 'success':
+      return <CheckCircle className="w-4 h-4" />
+    case 'error':
+      return <AlertCircle className="w-4 h-4" />
+    case 'warning':
+      return <AlertCircle className="w-4 h-4" />
+    default:
+      return <Info className="w-4 h-4" />
   }
-  const formatNotificationTime = (date: Date) => {
-    const now = new Date()
-    const diff = now.getTime() - date.getTime()
-    const seconds = Math.floor(diff / 1000)
-    const minutes = Math.floor(seconds / 60)
-    const hours = Math.floor(minutes / 60)
-    
-    if (seconds < 60) return 'Just now'
-    if (minutes < 60) return `${minutes}m ago`
-    if (hours < 24) return `${hours}h ago`
-    return date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
-  }
+}
+
+const formatNotificationTime = (date: Date) => {
+  const now = new Date()
+  const diff = now.getTime() - date.getTime()
+  const seconds = Math.floor(diff / 1000)
+  const minutes = Math.floor(seconds / 60)
+  const hours = Math.floor(minutes / 60)
+
+  if (seconds < 60) return 'Just now'
+  if (minutes < 60) return `${minutes}m ago`
+  if (hours < 24) return `${hours}h ago`
+  return date.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' })
+}
+
 export default function Sidebar({ open, onToggle, notifications = [], onClearNotifications, onRemoveNotification }: SidebarProps) {
-    const [showNotifications, setShowNotifications] = useState(false)
+  const [showNotifications, setShowNotifications] = useState(false)
   const location = useLocation()
   const pathname = location.pathname
   const { user } = useAuth()
@@ -75,230 +77,162 @@ export default function Sidebar({ open, onToggle, notifications = [], onClearNot
   return (
     <>
       {/* Desktop Sidebar */}
-      <div
-        className={`hidden md:flex md:fixed md:top-0 md:left-0 md:h-screen flex-col bg-sidebar/95 backdrop-blur-xl border-r border-sidebar-border/50 z-40 w-64 transform ${
+      <aside
+        className={`hidden md:flex md:fixed md:top-0 md:left-0 md:h-screen w-64 flex-col bg-card border-r z-40 transform transition-transform duration-200 ${
           open ? "translate-x-0" : "-translate-x-64"
-        } overflow-hidden transition-all duration-300 ease-out will-change-transform shadow-2xl shadow-sidebar-border/10`}
+        }`}
       >
-        <div className="p-6 border-b border-sidebar-border/50 bg-linear-to-r from-sidebar to-sidebar/80">
-          <Link to="/">
-            <div className="flex items-center gap-3 mb-2">
-              <div className="w-8 h-8 rounded-lg bg-linear-to-br from-primary via-primary/90 to-primary/80 flex items-center justify-center shadow-lg">
-                <Stethoscope className="w-4 h-4 text-white" />
-              </div>
-              <h1 className="text-xl font-bold text-sidebar-foreground bg-linear-to-r from-sidebar-foreground via-sidebar-foreground/90 to-sidebar-foreground/80 bg-clip-text">CareReport</h1>
+        <div className="p-4 border-b">
+          <Link to="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-md bg-primary flex items-center justify-center">
+              <Stethoscope className="w-4 h-4 text-primary-foreground" />
             </div>
+            <span className="text-lg font-bold text-foreground">Care Report</span>
           </Link>
-          <p className="text-xs text-sidebar-foreground/70 font-medium tracking-wide">Clinical Management Platform</p>
         </div>
 
-    <nav className="flex-1 p-4 space-y-3 overflow-y-auto scrollbar-thin scrollbar-thumb-sidebar-border/30 scrollbar-track-transparent">
-      {menuItems.map((item) => {
+        <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
+          {menuItems.map((item) => {
             const Icon = item.icon
             const isActive = pathname === item.href
 
             return (
               <Link key={item.href} to={item.href}>
                 <Button
-                  variant={isActive ? "default" : "ghost"}
-                  className={`w-full mb-1 justify-start gap-3 h-11 text-sm font-medium transition-all duration-200 group ${
-                    isActive
-                      ? "bg-linear-to-r from-sidebar-primary to-sidebar-primary/90 text-sidebar-primary-foreground shadow-lg shadow-sidebar-primary/20"
-                      : "text-sidebar-foreground/80 hover:text-sidebar-foreground hover:bg-sidebar-accent/10 hover:shadow-sm"
-                  }`}
+                  variant={isActive ? "secondary" : "ghost"}
+                  className="w-full justify-start gap-2 h-9 text-sm font-medium"
                 >
-                  <Icon className={`w-5 h-5 transition-transform duration-200 ${
-                    isActive ? "" : "group-hover:scale-110"
-                  }`} />
+                  <Icon className="w-4 h-4" />
                   <span>{item.label}</span>
                 </Button>
               </Link>
             )
           })}
           <Link to="/dashboard/settings">
-                <Button
-                  variant={pathname === '/dashboard/settings' ? "default" : "ghost"}
-                  className={`w-full justify-start gap-3 h-11 text-sm font-medium transition-all duration-200 group ${
-                    pathname === '/dashboard/settings'
-                      ? "bg-linear-to-r from-sidebar-primary to-sidebar-primary/90 text-sidebar-primary-foreground shadow-lg shadow-sidebar-primary/20"
-                      : "text-sidebar-foreground/80 hover:text-sidebar-foreground hover:bg-sidebar-accent/10 hover:shadow-sm"
-                  }`}
-                >
-                  <Settings className={`w-5 h-5 transition-transform duration-200 ${
-                  pathname === '/dashboard/settings' ? "" : "group-hover:scale-110"
-                }`} />
-                  <span>Settings</span>
-                </Button>
-              </Link>
+            <Button
+              variant={pathname === '/dashboard/settings' ? "secondary" : "ghost"}
+              className="w-full justify-start gap-2 h-9 text-sm font-medium"
+            >
+              <Settings className="w-4 h-4" />
+              <span>Settings</span>
+            </Button>
+          </Link>
         </nav>
-        <div className="p-4">
-          
+
+        <div className="p-3 border-t">
           <LogoutButton />
         </div>
-      </div>
+      </aside>
 
       {/* Mobile Sidebar Toggle */}
-      <div className="md:hidden fixed top-0 left-0 right-0 z-40 h-16 bg-sidebar border-b border-sidebar-border flex items-center px-4 gap-4">
-        <Button variant="ghost" size="sm" onClick={onToggle} className="text-sidebar-foreground">
-          {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      <div className="md:hidden fixed top-0 left-0 right-0 z-40 h-12 bg-card border-b flex items-center px-4 gap-3">
+        <Button variant="ghost" size="sm" onClick={onToggle}>
+          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </Button>
-        <div className="flex flex-1 max-w-md relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input placeholder="Search patients, codes..." className="pl-10 h-9 bg-input" />
+        <div className="flex-1 max-w-sm relative">
+          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+          <Input placeholder="Search..." className="pl-8 h-8 text-sm" />
         </div>
         <ThemeToggle />
         {user?.role === 'doctor' && (
           <div className="relative">
             <button
-              onClick={() => {
-                setShowNotifications(!showNotifications)
-              }}
+              onClick={() => setShowNotifications(!showNotifications)}
               onBlur={() => setTimeout(() => setShowNotifications(false), 200)}
               aria-label="View notifications"
-              className="relative w-10 h-10 rounded-full bg-muted/50 hover:bg-muted flex items-center justify-center text-foreground transition-all duration-200 hover:scale-105"
+              className="relative w-8 h-8 rounded-md hover:bg-muted flex items-center justify-center text-muted-foreground transition-colors"
             >
-              <Bell className="w-5 h-5" />
+              <Bell className="w-4 h-4" />
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center animate-pulse">
+                <span className="absolute -top-1 -right-1 w-4 h-4 bg-destructive text-destructive-foreground text-[10px] font-bold rounded-full flex items-center justify-center">
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </span>
               )}
             </button>
 
-          {/* Notification Dropdown */}
-          {showNotifications && (
-            <div className="absolute right-0 top-full mt-2 w-96 max-h-128 bg-popover/95 backdrop-blur-xl border border-border/50 rounded-lg shadow-2xl shadow-border/10 z-50 overflow-hidden flex flex-col">
-              {/* Header */}
-              <div className="p-4 border-b border-border/50 flex items-center justify-between bg-muted/30">
-                <div>
-                  <h3 className="font-semibold text-sm">Today's Notifications</h3>
-                  <p className="text-xs text-muted-foreground">{unreadCount} notification{unreadCount !== 1 ? 's' : ''}</p>
-                </div>
-                {unreadCount > 0 && onClearNotifications && (
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      onClearNotifications()
-                    }}
-                    className="text-xs text-primary hover:underline"
-                  >
-                    Clear all
-                  </button>
-                )}
-              </div>
-
-              {/* Notification List */}
-              <div className="overflow-y-auto flex-1">
-                {notifications.length === 0 ? (
-                  <div className="p-8 text-center">
-                    <Bell className="w-12 h-12 mx-auto mb-3 text-muted-foreground/50" />
-                    <p className="text-sm text-muted-foreground">No notifications today</p>
-                    <p className="text-xs text-muted-foreground/70 mt-1">You're all caught up!</p>
+            {showNotifications && (
+              <div className="absolute right-0 top-full mt-1 w-80 bg-popover border rounded-md shadow-md z-50">
+                <div className="p-3 border-b flex items-center justify-between">
+                  <div>
+                    <h3 className="font-semibold text-sm">Notifications</h3>
+                    <p className="text-xs text-muted-foreground">{unreadCount} unread</p>
                   </div>
-                ) : (
-                  <div className="divide-y divide-border/30">
-                    {notifications.map((notification) => (
-                      <div
-                        key={notification.id}
-                        className="p-4 hover:bg-accent/10 transition-colors relative group"
-                      >
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            onRemoveNotification?.(notification.id)
-                          }}
-                          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-destructive/10 rounded"
-                          aria-label="Dismiss notification"
-                        >
-                          <X className="w-3 h-3 text-muted-foreground hover:text-destructive" />
-                        </button>
-
-                        <div className="flex gap-3 pr-6">
-                          <div className="shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
-                            {getNotificationIcon(notification.type)}
-                          </div>
-                          
-                          <div className="flex-1 min-w-0">
-                            <h4 className="font-semibold text-sm mb-1 leading-tight">
-                              {notification.title}
-                            </h4>
-                            <p className="text-sm text-muted-foreground leading-snug mb-2">
-                              {notification.message}
-                            </p>
-
-                            {notification.data?.patientName && (
-                              <div className="flex items-center gap-2 text-xs mb-2">
-                                <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary font-medium">
-                                  {notification.data.patientName as string}
-                                </span>
-                                {notification.data.patientAge && (
-                                  <span className="text-muted-foreground">
-                                    Age: {notification.data.patientAge}
-                                  </span>
-                                )}
-                              </div>
-                            )}
-
-                            <div className="text-xs text-muted-foreground/70">
-                              {formatNotificationTime(notification.timestamp)}
+                  {unreadCount > 0 && onClearNotifications && (
+                    <button onClick={(e) => { e.stopPropagation(); onClearNotifications() }} className="text-xs text-primary hover:underline">
+                      Clear all
+                    </button>
+                  )}
+                </div>
+                <div className="max-h-80 overflow-y-auto">
+                  {notifications.length === 0 ? (
+                    <div className="p-6 text-center">
+                      <Bell className="w-8 h-8 mx-auto mb-2 text-muted-foreground/50" />
+                      <p className="text-sm text-muted-foreground">No notifications</p>
+                    </div>
+                  ) : (
+                    <div className="divide-y">
+                      {notifications.map((notification) => (
+                        <div key={notification.id} className="p-3 hover:bg-muted/50 transition-colors relative group">
+                          <button
+                            onClick={(e) => { e.stopPropagation(); onRemoveNotification?.(notification.id) }}
+                            className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 p-1 hover:bg-destructive/10 rounded text-muted-foreground hover:text-destructive"
+                            aria-label="Dismiss"
+                          >
+                            <X className="w-3 h-3" />
+                          </button>
+                          <div className="flex gap-2 pr-5">
+                            <div className="shrink-0 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                              {getNotificationIcon(notification.type)}
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <h4 className="text-sm font-medium leading-tight">{notification.title}</h4>
+                              <p className="text-xs text-muted-foreground mt-0.5">{notification.message}</p>
+                              <span className="text-xs text-muted-foreground/70 mt-1 block">{formatNotificationTime(notification.timestamp)}</span>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          )}
+            )}
           </div>
         )}
       </div>
 
+      {/* Mobile Sidebar Drawer */}
       {open && (
         <div className="md:hidden fixed inset-0 z-30">
-          <div className="absolute inset-0 bg-black/50 transition-opacity duration-200" />
-          <div className={`relative w-64 h-screen bg-sidebar border-r border-sidebar-border flex flex-col transform transition-transform duration-300 ease-in-out ${open ? 'translate-x-0' : '-translate-x-64'}`}>
-            <div className="p-6 border-b border-sidebar-border mt-16">
-              <h1 className="text-xl font-bold text-sidebar-foreground">EMR System</h1>
+          <div className="absolute inset-0 bg-black/50" onClick={onToggle} />
+          <div className="relative w-64 h-screen bg-card border-r flex flex-col">
+            <div className="p-4 border-b flex items-center justify-between">
+              <span className="font-bold text-foreground">Care Report</span>
+              <Button variant="ghost" size="sm" onClick={onToggle}>
+                <X className="w-4 h-4" />
+              </Button>
             </div>
-
-            <nav className="flex-1 p-4 space-y-2">
+            <nav className="flex-1 p-3 space-y-1">
               {menuItems.map((item) => {
                 const Icon = item.icon
                 const isActive = pathname === item.href
-
                 return (
                   <Link key={item.href} to={item.href} onClick={onToggle}>
-                    <Button
-                      variant={isActive ? "default" : "ghost"}
-                      className={`w-full justify-start gap-3 ${
-                        isActive
-                          ? "bg-sidebar-primary text-sidebar-primary-foreground"
-                          : "text-sidebar-foreground hover:bg-sidebar-accent/10"
-                      }`}
-                    >
-                      <Icon className="w-5 h-5" />
+                    <Button variant={isActive ? "secondary" : "ghost"} className="w-full justify-start gap-2 h-9 text-sm font-medium">
+                      <Icon className="w-4 h-4" />
                       <span>{item.label}</span>
                     </Button>
                   </Link>
                 )
               })}
               <Link to="/dashboard/settings" onClick={onToggle}>
-                <Button
-                  variant={pathname === '/dashboard/settings' ? "default" : "ghost"}
-                  className={`w-full justify-start gap-3 ${
-                    pathname === '/dashboard/settings'
-                      ? "bg-sidebar-primary text-sidebar-primary-foreground"
-                      : "text-sidebar-foreground hover:bg-sidebar-accent/10"
-                  }`}
-                >
-                  <Settings className="w-5 h-5" />
+                <Button variant={pathname === '/dashboard/settings' ? "secondary" : "ghost"} className="w-full justify-start gap-2 h-9 text-sm font-medium">
+                  <Settings className="w-4 h-4" />
                   <span>Settings</span>
                 </Button>
               </Link>
             </nav>
-            <div className="p-4">
+            <div className="p-3 border-t">
               <LogoutButton />
             </div>
           </div>

@@ -5,7 +5,9 @@ export default function About() {
         <main className="min-h-screen bg-background relative">
                   <div className="relative z-10">
                     <Header />
-                    <p>Hello World, we are zooweemama</p>
+                    <p className="text-lg text-foreground/60 dark:text-foreground/70 flex items-center justify-center h-screen">
+                      Coming soon...
+                    </p>
                   </div>
         </main>
     )
