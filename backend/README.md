@@ -1,4 +1,4 @@
-# HealthSync backend
+# Care Report backend
 
 This folder contains a small Express backend that implements the API the React app expects. It mirrors the endpoints previously in the Next.js `frontend` API routes.
 

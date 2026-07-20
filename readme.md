@@ -1,8 +1,8 @@
-# 🏥 HealthSync
+# 🏥 CareReport
 
 > Bridging Traditional Medicine with Modern Healthcare Technology
 
-**HealthSync** is a comprehensive Electronic Medical Records (EMR) platform that revolutionizes healthcare management by seamlessly integrating ICD-11 disease classification, real-time collaboration, AI-powered medical insights, and instant access to relevant research papers. Built for organizations and healthcare professionals who demand precision, efficiency, and innovation.
+**CareReport** is a comprehensive Electronic Medical Records (EMR) platform that revolutionizes healthcare management by seamlessly integrating ICD-11 disease classification, real-time collaboration, AI-powered medical insights, and instant access to relevant research papers. Built for organizations and healthcare professionals who demand precision, efficiency, and innovation.
 
 
 ## ✨ Features
@@ -42,7 +42,7 @@
 ## 🏗️ Architecture
 
 ```
-└── akankshrakesh-healthsync-react/
+└── DivineAde-CareReport-react/
     ├── package.json                          # Root monorepo package configuration
     ├── vercel.json                           # Vercel deployment configuration with API routing
     ├── api/
@@ -164,8 +164,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/AkankshRakesh/healthsync-react
-   cd HealthSync-React
+   git clone https://github.com/DivineAde/Healthcare-management-system.git
+   cd CareReport-React
    ```
 
 2. **Install dependencies**
@@ -188,7 +188,7 @@
    ```env
    # Database
    MONGODB_URI=mongodb-uri
-   MONGODB_DB=healthsync
+   MONGODB_DB=CareReport
    
    # Authentication
    JWT_SECRET=your-jwt-key
